@@ -1,0 +1,62 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title>
+      CONTACTOS
+    </ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+  <ion-list>
+
+    <ion-item>
+      <ion-label floating>Nombre</ion-label>
+      <ion-input type="text" [(ngModel)]="contactoNuevo.nombre"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label floating>Teléfono</ion-label>
+      <ion-input type="text" [(ngModel)]="contactoNuevo.telefono"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label floating>Foto</ion-label>
+      <ion-input type="text" [(ngModel)]="contactoNuevo.foto"></ion-input>
+    </ion-item>
+
+    <button ion-button color="dark" (click)="guardar()">Guardar</button>
+
+  </ion-list>
+
+  <ion-list>
+      <ion-list-header>
+        Contactos Guardados
+      </ion-list-header>
+      <ion-item-sliding *ngFor="let contacto of contactos">
+        <ion-item>
+          <ion-avatar item-start>
+            <img src="{{contacto.foto}}">
+          </ion-avatar>
+          <h2>{{contacto.nombre}}</h2>
+          <p>{{contacto.telefono}}</p>
+        </ion-item>
+        <ion-item-options side="left">
+          <button ion-button color="secondary" (click)="llamar(contacto)">
+            <ion-icon name="call"></ion-icon>
+            Llamar
+          </button>
+        </ion-item-options>
+        <ion-item-options side="right">
+          <button ion-button color="danger" (click)="borrar(contacto)">
+            <ion-icon name="remove-circle"></ion-icon>
+            Borrar
+          </button>
+          <button ion-button color="dark" (click)="editar(contacto)">
+            <ion-icon name="create"></ion-icon>
+            Editar
+          </button>
+        </ion-item-options>
+      </ion-item-sliding>
+    </ion-list>
+
+</ion-content>
